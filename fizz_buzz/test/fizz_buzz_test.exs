@@ -31,5 +31,10 @@ defmodule FizzBuzzTest do
       expected_response = {:error, "Error reading the file: enoent"}
       assert FizzBuzz.build("invalid.txt") == expected_response
     end
+
+    test "when there is no number eligible for fizz, buzz or fizzbuzz, return list without changes" do
+      expected_response = {:ok, [1,1,1,1,1,1,1,1,1]}
+      assert FizzBuzz.build("non_fizz_buzz_numbers.txt") == expected_response
+    end
   end
 end

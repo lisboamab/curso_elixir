@@ -1,12 +1,10 @@
 defmodule FizzBuzz do
-
-  #def build(file_name) do
-    #case File.read(file_name) do
-      #{:ok, result} -> result
-      #{:error, reason} -> reason
-    #end
-  #end
-
+  # def build(file_name) do
+  # case File.read(file_name) do
+  # {:ok, result} -> result
+  # {:error, reason} -> reason
+  # end
+  # end
 
   def build(file_name) do
     file_name
@@ -18,11 +16,13 @@ defmodule FizzBuzz do
     response =
       result
       |> String.split(",")
-      |> Enum.map(&convert_and_evaluate_numbers/1) #fn number -> String.to_integer(number) end O & e o /1 substitui o codigo ao lado
+      # fn number -> String.to_integer(number) end O & e o /1 substitui o codigo ao lado
+      |> Enum.map(&convert_and_evaluate_numbers/1)
 
     {:ok, response}
   end
-  defp  handle_file_read({:error, reason}), do: {:error, "Error reading the file: #{reason}"}
+
+  defp handle_file_read({:error, reason}), do: {:error, "Error reading the file: #{reason}"}
 
   defp convert_and_evaluate_numbers(number) do
     number
@@ -34,5 +34,4 @@ defmodule FizzBuzz do
   defp evaluate_numbers(number) when rem(number, 3) == 0, do: :fizz
   defp evaluate_numbers(number) when rem(number, 5) == 0, do: :buzz
   defp evaluate_numbers(number), do: number
-
 end
